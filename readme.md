@@ -118,6 +118,41 @@ unresolved. Nothing is invented or "fixed".
 
 ## Troubleshooting
 
+## AI Usage and Team Contributions
+
+### Overview
+
+During the development of **UniGuide AI – Smart Academic Advisor**, our team used Artificial Intelligence (AI) tools to support the development process, improve productivity, solve technical challenges, and enhance project documentation.
+
+AI was used as an assisting tool, while the team remained responsible for the project's planning, implementation, testing, and final decisions.
+
+### Contribution Breakdown
+
+| Contribution | Percentage |
+|---|---|
+| Team Contributions | **60%** |
+| AI-Assisted Contributions | **40%** |
+
+*These percentages represent our team's estimated contribution breakdown.*
+
+### Team Contributions (60%)
+
+Our team was primarily responsible for:
+
+- Identifying the academic advising problem and defining the project's objectives.
+- Planning the system architecture and designing the RAG workflow.
+- Collecting and analyzing student survey data.
+- Researching and organizing official university information.
+- Developing and integrating the project's main components.
+- Testing, debugging, and evaluating the system.
+- Reviewing and validating AI-assisted suggestions.
+- Making final technical and design decisions.
+
+### AI-Assisted Contributions (40%)
+
+AI tools were used to assist with:
+
+- Brainstorming and improving project
 - **Windows Smart App Control** may block a native DLL on the first import
   (`DLL load failed … Application Control policy`). Re-running usually succeeds once the file's
   reputation check completes. Otherwise, run from a folder outside OneDrive or allow Python.

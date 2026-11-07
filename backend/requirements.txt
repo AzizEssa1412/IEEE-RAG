@@ -1,0 +1,17 @@
+# UniGuide AI backend — all free / open-source
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+pydantic==2.10.4
+httpx==0.28.1
+beautifulsoup4==4.12.3
+lxml==5.3.0
+trafilatura==2.0.0
+PyMuPDF==1.25.1
+openpyxl==3.1.5
+chromadb==0.5.23
+sentence-transformers==3.3.1
+# Optional LLM provider with a free tier (Ollama is called over plain HTTP)
+google-genai==1.2.0
+# Tests
+pytest==8.3.4

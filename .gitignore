@@ -1,0 +1,14 @@
+# Python
+backend/.venv/
+__pycache__/
+.pytest_cache/
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/next-env.d.ts
+# Runtime data (indexes, downloaded files, logs) — regenerate with scripts.ingest
+data/chroma/
+data/files/
+data/uniguide.db*
+data/*.log
+.env

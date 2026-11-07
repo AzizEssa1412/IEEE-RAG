@@ -1,0 +1,42 @@
+import json, urllib.request
+CASES = [
+ # answerable (in the plan)
+ ("كم ساعة اختياري من متطلبات الكلية؟", True),           # 3 (II-b)
+ ("شو المتطلب السابق لمادة المعالجات الدقيقة؟", True),    # 0702341
+ ("مادة هندسة البرمجيات بأي سنة؟", True),                 # third year fall
+ ("كم ساعة مادة مشروع التخرج؟", True),                    # 3
+ ("شو المتطلب المتزامن لمختبر الفيزياء 0302113؟", True),  # C-0302103
+ ("شو مواد سنة خامسة فصل أول؟", True),
+ ("شو المواد الإجبارية بمتطلبات الجامعة؟", True),
+ ("What are the admission requirements?", True),
+ ("How many credit hours are faculty requirements?", True),
+ ("شو وصف مادة الأنظمة المدمجة؟", True),
+ ("مين المواد اللي بتعتمد على مادة هياكل البيانات؟", True),
+ ("كم ساعة لازم أكون مخلص عشان أسجل التدريب؟", True),      # 120
+ ("شو مخرجات التعلم للبرنامج؟", True),                   # ILOs
+ ("هل مادة أمن الشبكات اختيارية؟", True),                # III-b elective
+ ("شو المتطلب السابق لمادة 0702453؟", True),             # 0702324
+ # not answerable
+ ("كم رسوم التسجيل للفصل؟", False),
+ ("وين مكتب القبول والتسجيل؟", False),
+ ("مين الدكتور اللي بدرس نظم التشغيل؟", False),
+ ("إمتى بتبلش الدورة الصيفية؟", False),
+ ("شو المتطلب السابق لمادة الحوسبة السحابية؟", False),
+ ("في مسار أمن سيبراني بهندسة الحاسوب؟", False),
+ ("كيف بقدم طلب تأجيل فصل؟", False),
+ ("كم الحد الأدنى للمعدل عشان ما ينذروني أكاديمياً؟", False),
+ ("شو ساعات دوام المكتبة؟", False),
+ ("What is the tuition fee per credit hour?", False),
+ ("Who teaches Data Structures?", False),
+ ("بقدر أعادل مواد من جامعة النجاح؟", False),
+ ("شو علامة النجاح بالمادة؟", False),
+ ("في باص للجامعة من رام الله؟", False),
+ ("شو أفضل لغة برمجة أتعلمها؟", False),
+]
+ok=0
+for q, should in CASES:
+    r = json.load(urllib.request.urlopen(urllib.request.Request("http://127.0.0.1:8000/api/chat", data=json.dumps({"question": q}).encode(), headers={"Content-Type": "application/json"}), timeout=240))
+    ans = r["status"] in ("answered","conflict"); good = ans == should; ok += good
+    print(("OK  " if good else "FAIL"), "ANS" if should else "REF", "->", r["status"], "|", r.get("debug",{}).get("evidence"), "|", q)
+    if not good and ans: print("      ", r["answer"][:150].replace("\n"," / "))
+print(f"held-out accuracy {ok}/{len(CASES)}")
